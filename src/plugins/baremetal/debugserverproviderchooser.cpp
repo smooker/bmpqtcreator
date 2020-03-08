@@ -108,6 +108,7 @@ void DebugServerProviderChooser::populate()
     m_chooser->addItem(tr("None"));
 
     for (const IDebugServerProvider *p : DebugServerProviderManager::providers()) {
+        qDebug() << p->displayName();
         if (!providerMatches(p))
             continue;
         m_chooser->addItem(providerText(p), QVariant::fromValue(p->id()));

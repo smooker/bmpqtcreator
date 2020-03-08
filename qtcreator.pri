@@ -81,8 +81,8 @@ isEmpty(IDE_LIBRARY_BASENAME) {
 }
 
 equals(TEST, 1) {
-    QT +=testlib
-    DEFINES += WITH_TESTS
+#    QT +=testlib
+#    DEFINES += WITH_TESTS
 }
 
 IDE_SOURCE_TREE = $$PWD

@@ -3624,6 +3624,8 @@ void GdbEngine::setupEngine()
         return;
     }
 
+    //here smooker
+
     showMessage("GDB STARTED, INITIALIZING IT");
     runCommand({"show version", CB(handleShowVersion)});
     //runCommand("-list-features", CB(handleListFeatures));
@@ -4505,12 +4507,14 @@ void GdbEngine::callTargetRemote()
         channel = "tcp:" + channel;
     }
 
-    if (m_isQnxGdb)
-        runCommand({"target qnx " + channel, CB(handleTargetQnx)});
-    else if (runParameters().useExtendedRemote)
-        runCommand({"target extended-remote " + channel, CB(handleTargetExtendedRemote)});
-    else
-        runCommand({"target remote " + channel, CB(handleTargetRemote)});
+    //here smooker
+//    if (m_isQnxGdb)
+//        runCommand({"target qnx " + channel, CB(handleTargetQnx)});
+//    else if (runParameters().useExtendedRemote)
+//        runCommand({"target extended-remote " + channel, CB(handleTargetExtendedRemote)});
+        runCommand({"target extended-remote /dev/ttyBmpGdb" + channel, CB(handleTargetExtendedRemote)});
+//    else
+//        runCommand({"target remote " + channel, CB(handleTargetRemote)});
 }
 
 void GdbEngine::handleTargetRemote(const DebuggerResponse &response)

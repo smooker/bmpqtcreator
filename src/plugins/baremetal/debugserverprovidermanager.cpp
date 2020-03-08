@@ -31,6 +31,7 @@
 #include "debugservers/gdb/stlinkutilgdbserverprovider.h"
 #include "debugservers/gdb/jlinkgdbserverprovider.h"
 #include "debugservers/gdb/eblinkgdbserverprovider.h"
+#include "debugservers/gdb/bmpgdbserverprovider.h"
 
 // UVSC debug servers.
 #include "debugservers/uvsc/simulatoruvscserverprovider.h"
@@ -60,7 +61,8 @@ static DebugServerProviderManager *m_instance = nullptr;
 
 DebugServerProviderManager::DebugServerProviderManager()
     : m_configFile(Utils::FilePath::fromString(Core::ICore::userResourcePath() + fileNameKeyC))
-    , m_factories({new JLinkGdbServerProviderFactory,
+    , m_factories({new BMPGdbServerProviderFactory,
+                   new JLinkGdbServerProviderFactory,
                    new OpenOcdGdbServerProviderFactory,
                    new StLinkUtilGdbServerProviderFactory,
                    new EBlinkGdbServerProviderFactory,
